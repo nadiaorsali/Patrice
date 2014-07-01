@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="675161235">
+    <data-source source="LOCAL" name="hibernate.cfg.xml" uuid="9914c0fc-7bbe-4af9-98ff-8380369d05c9">
+      <jdbc-driver>oracle.jdbc.driver.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@//127.0.0.1:1521</jdbc-url>
+      <user-name>tpecommerce</user-name>
+      <user-password>dfdedfdadfcfdfc9dfc5dfc7dfc7dfcfdfd8dfc9dfcf</user-password>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+
