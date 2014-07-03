@@ -11,11 +11,11 @@ import java.util.List;
 @RequestScoped
 public class UsersController {
 
-	private final Users individu = new Users();
-    private final UsersDao individuDao = new UsersDao();
+	private final Users user = new Users();
+    private final UsersDao userDao = new UsersDao();
 
 	public String create() {
-        this.individuDao.save(this.individu);
+        this.userDao.save(this.user);
 		return "individu?faces-redirect=true";
 	}
 
@@ -23,10 +23,22 @@ public class UsersController {
 	}
 
 	public List<Users> getAll() {
-		return this.individuDao.getAll();
+		return this.userDao.getAll();
 	}
 
-	public Users getIndividu() {
-		return individu;
+	public Users getUser() {
+		return user;
 	}
+
+    public void connect()
+    {
+        if(this.userDao.findUserByEmailAndPassword(this.user) != null)
+        {
+            System.out.println("coonecté");
+        }
+        else
+        {
+            System.out.println("pas connecté");
+        }
+    }
 }

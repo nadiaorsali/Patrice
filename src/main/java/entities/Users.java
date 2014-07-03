@@ -25,6 +25,30 @@ public class Users {
 	@Max(value = 150, message = "L'âge est incorrect")
 	private Integer age;
 
+    @Size(min = 1, message = "Veuillez renseigner votre adresse email")
+    @Column(name = "user_mail")
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    private String mail;
+
+    @Size(min = 1, message = "Veuillez renseigner votre mot de passe")
+    @Column(name = "user_password")
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    private String password;
+
     @Id
     @GeneratedValue
     @Column(name = "user_id")
