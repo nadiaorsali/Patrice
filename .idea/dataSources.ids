@@ -14,6 +14,11 @@
     <schema name="" catalog="performance_schema"/>
     <schema name="" catalog="phpmyadmin"/>
     <schema name="" catalog="tpjee"/>
+    <table name="UserType" schema="" catalog="Patrice" type="TABLE">
+      <column name="uType_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="uType_libelle" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="uType_id"/>
+    </table>
     <table name="Users" schema="" catalog="Patrice" type="TABLE">
       <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="user_name" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
@@ -21,6 +26,7 @@
       <column name="user_age" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="user_mail" sqlType="VARCHAR" precision="250" scale="0" nullable="false" jdbcType="12"/>
       <column name="user_password" sqlType="VARCHAR" precision="250" scale="0" nullable="false" jdbcType="12"/>
+      <column name="user_idType" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="user_id"/>
     </table>
     <table name="individus" schema="" catalog="david" type="TABLE">

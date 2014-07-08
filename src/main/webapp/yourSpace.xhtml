@@ -10,7 +10,21 @@
 </h:head>
 <h:body>
     <ui:include src="Structure/header.xhtml" />
-
+    <c:choose>
+        <c:when test="#{usersController.user.type.uTypeId == 3}">
+            <p>Entreprise</p>
+            <ul>
+                <li>
+                    <a href="addEmploye.xhtml">Ajouter un employé</a>
+                </li>
+            </ul>
+        </c:when>
+        <c:otherwise>
+            <p>Echec</p>
+        </c:otherwise>
+    </c:choose>
     <ui:include src="Structure/footer.xhtml" />
 </h:body>
 </html>
+
+

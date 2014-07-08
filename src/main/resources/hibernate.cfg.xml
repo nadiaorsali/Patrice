@@ -17,5 +17,6 @@
         <property name="current_session_context_class">thread</property>
         <property name="hibernate.show_sql">false</property>
         <mapping class="entities.Users"/>
+        <mapping class="entities.UserType"/>
     </session-factory>
 </hibernate-configuration>

@@ -14,9 +14,8 @@ public class UsersDao extends AbstractDao<Users, Long> {
     public static void main(String[] args) {
         UsersDao usersDao = new UsersDao();
         Users users = new Users();
-        users.setMail("machut.nicolas@gmail.com");
-        users.setPassword("812AJH");
-        System.out.println(usersDao.findUserByEmailAndPassword(users).getName());
+        users.setId((long) 1);
+        System.out.println(usersDao.get(Users.class, users.getId()).getMail());
 
     }
 

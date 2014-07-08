@@ -1,9 +1,6 @@
 package entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -11,6 +8,18 @@ import javax.validation.constraints.Size;
 
 @Entity(name = "Users")
 public class Users {
+
+    @ManyToOne()
+    @JoinColumn(name="user_idType", referencedColumnName = "uType_id")
+    public UserType getType() {
+        return type;
+    }
+
+    public void setType(UserType type) {
+        this.type = type;
+    }
+
+    private UserType type;
 
 	private Long id;
 
@@ -24,6 +33,7 @@ public class Users {
 	@Min(value = 0, message = "L'âge ne peut pas être négatif")
 	@Max(value = 150, message = "L'âge est incorrect")
 	private Integer age;
+
 
     @Size(min = 1, message = "Veuillez renseigner votre adresse email")
     @Column(name = "user_mail")

@@ -5,6 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.classic.Session;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.ejb.Singleton;
 
 /**
@@ -13,19 +15,21 @@ import javax.ejb.Singleton;
 @Singleton
 public class SessionHibernate {
     private SessionFactory factory;
-    private Session session;
 
-    public SessionHibernate()
-    {
+
+    @PostConstruct
+    public void init() {
         factory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
     }
 
-    public Session getInstance()
-    {
-        if(session == null)
-        {
-            session = factory.openSession();
+    @PreDestroy
+    public void tearDown() {
+        if (factory != null) {
+            factory.close();
         }
-        return session;
+    }
+
+    public Session getInstance() {
+        return factory.openSession();
     }
 }
