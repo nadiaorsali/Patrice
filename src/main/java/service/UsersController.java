@@ -16,7 +16,7 @@ import java.util.List;
 public class UsersController implements Serializable {
 
 	private Users user = new Users();
-    private final UsersDao userDao = new UsersDao();
+    private UsersDao userDao = new UsersDao();
 
     public boolean isConnected() {
         return connected;
@@ -59,6 +59,15 @@ public class UsersController implements Serializable {
             ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
             context.redirect("index.xhtml");
         }
+    }
+
+    public void disconnect() throws IOException {
+        System.out.println("Deconnecting ...");
+        this.user = null;
+        this.userDao = null;
+        this.connected = false;
+        ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+        context.redirect("index.xhtml");
     }
 
 

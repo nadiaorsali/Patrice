@@ -42,7 +42,11 @@
                     <c:choose>
                         <c:when test="#{usersController.connected == true}">
                             <ul class="nav navbar-nav">
-                                <li>#{usersController.user.type.uTypeLibelle}</li>
+                                <li>
+                                    <h:form class="navbar-form navbar-right" role="form" acceptcharset="UTF-8">
+                                        <p:commandButton value="Deconnexion" actionListener="#{usersController.disconnect()}"/>
+                                    </h:form>
+                                </li>
                             </ul>
                         </c:when>
                     </c:choose>

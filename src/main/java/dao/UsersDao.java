@@ -1,6 +1,5 @@
 package dao;
 
-import common.SessionHibernate;
 import entities.Users;
 import org.hibernate.Query;
 import org.hibernate.classic.Session;
@@ -32,14 +31,20 @@ public class UsersDao extends AbstractDao<Users, Long> {
 
     public Users findUserByEmailAndPassword(Users user)
     {
-        Session session = new SessionHibernate().getInstance();
+        Session session = this.getSessionHibernate();
         org.hibernate.Transaction transaction = session.beginTransaction();
-        Query query = session.createQuery("from Users where user_mail = :mail and user_password = :password");
-        query.setParameter("mail", user.getMail());
-        query.setParameter("password", user.getPassword());
         Users userFinded = new Users();
-        userFinded = (Users) query.uniqueResult();
-        session.close();
+        try{
+            System.out.println("Finding a user by email and password ...");
+            Query query = session.createQuery("from Users where user_mail = :mail and user_password = :password");
+            query.setParameter("mail", user.getMail());
+            query.setParameter("password", user.getPassword());
+            userFinded = (Users) query.uniqueResult();
+        } catch (RuntimeException re) {
+            System.out.println("Error during finding a user by email and password : "+ re);
+        } finally {
+            session.close();
+        }
         return userFinded;
     }
 }

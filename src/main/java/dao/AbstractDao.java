@@ -90,7 +90,7 @@ abstract class AbstractDao<T, PK extends Serializable> implements DAO<T, PK> {
         }
     }
 
-    private Session getSessionHibernate() {
+    protected Session getSessionHibernate() {
         SessionHibernate sessionHibernate = new SessionHibernate();
         sessionHibernate.init();
         Session session = sessionHibernate.getInstance();
